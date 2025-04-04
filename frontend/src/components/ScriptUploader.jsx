@@ -6,11 +6,13 @@ export default function ScriptUploader({ onPanelsReceived }) {
 
   const handleSubmit = async () => {
     try {
-      // Replace with real backend endpoint later
-      const response = await axios.post('https://your-backend-url/convert-script', { script });
+      const response = await axios.post('http://localhost:8080/convert-script', {
+        script
+      });
       onPanelsReceived(response.data.panels);
     } catch (err) {
       console.error('Error converting script:', err);
+      alert('Backend error – is the server running?');
     }
   };
 
