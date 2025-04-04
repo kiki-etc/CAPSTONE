@@ -1,4 +1,3 @@
-// frontend/src/components/ComicPanelEditor.jsx
 import React, { useState } from 'react';
 
 export default function ComicPanelEditor({ panels }) {

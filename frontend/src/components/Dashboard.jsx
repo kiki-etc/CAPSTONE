@@ -1,4 +1,3 @@
-// frontend/src/components/Dashboard.jsx
 import React from 'react';
 
 export default function Dashboard({ version, lastUpdated }) {

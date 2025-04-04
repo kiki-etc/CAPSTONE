@@ -1,4 +1,3 @@
-// frontend/App.js
 import React, { useState } from 'react';
 import ScriptUploader from './components/ScriptUploader';
 import ComicPanelEditor from './components/ComicPanelEditor';
