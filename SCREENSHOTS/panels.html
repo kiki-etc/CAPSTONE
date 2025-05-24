@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generated Panels - Digital Comics Collaboration</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7f6;
+    }
+
+    header {
+      background-color: #8ACE00;
+      padding: 1em;
+      text-align: center;
+      color: white;
+      font-size: 1.8em;
+    }
+
+    main {
+      padding: 2em;
+      display: flex;
+      flex-direction: column;
+      gap: 2em;
+      align-items: center;
+    }
+
+    .panel-card {
+      background: white;
+      padding: 1.5em;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+
+    .panel-title {
+      font-size: 1.4em;
+      color: #333;
+    }
+
+    .panel-description {
+      font-size: 1em;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1em;
+    }
+
+    .buttons button {
+      padding: 0.6em 1.2em;
+      font-size: 0.95em;
+      border: none;
+      border-radius: 8px;
+      background-color: #8ACE00;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .buttons button:hover {
+      background-color: #76b300;
+    }
+
+    .back-button {
+      float: left;
+      background-color: white;
+      color: #8ACE00;
+      border: none;
+      padding: 0.3em 0.8em;
+      font-size: 0.85em;
+      border-radius: 5px;
+      margin-right: 1em;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #e8f7cc;
+    }
+
+    footer {
+      background-color: #ffffff;
+      padding: 1em;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .footer-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+    }
+
+    .footer-buttons button {
+      background-color: #8ACE00;
+      color: white;
+      border: none;
+      padding: 0.6em 1.2em;
+      font-size: 0.9em;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .footer-buttons button:hover {
+      background-color: #76b300;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button class="back-button">← Back</button>
+  Panel Suggestions
+</header>
+
+<main>
+
+  <div class="panel-card">
+    <div class="panel-title">Page 1, Panel 1</div>
+    <div class="panel-description" contenteditable="false">
+      A spaceship flies across a glittering field of stars. The earth glows faintly in the background. (Wide shot)
+    </div>
+    <div class="buttons">
+      <button>Edit</button>
+      <button>Accept</button>
+    </div>
+  </div>
+
+  <div class="panel-card">
+    <div class="panel-title">Page 1, Panel 2</div>
+    <div class="panel-description" contenteditable="false">
+      Close-up: Captain Nova grips the ship’s steering console, determination in her eyes.
+    </div>
+    <div class="buttons">
+      <button>Edit</button>
+      <button>Accept</button>
+    </div>
+  </div>
+
+  <div class="panel-card">
+    <div class="panel-title">Page 1, Panel 3</div>
+    <div class="panel-description" contenteditable="false">
+      A flash of light — an enemy drone appears from hyperspace behind them.
+    </div>
+    <div class="buttons">
+      <button>Edit</button>
+      <button>Accept</button>
+    </div>
+  </div>
+
+  <div class="panel-card">
+    <div class="panel-title">Page 2, Full Page Panel</div>
+    <div class="panel-description" contenteditable="false">
+      The crew scrambles into action. Alarms blare across the bridge.
+    </div>
+    <div class="buttons">
+      <button>Edit</button>
+      <button>Accept</button>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  document.querySelectorAll('.panel-card').forEach((card) => {
+    const editBtn = card.querySelector('.buttons button:nth-child(1)');
+    const desc = card.querySelector('.panel-description');
+    
+    editBtn.addEventListener('click', () => {
+      const isEditing = desc.getAttribute('contenteditable') === 'true';
+      desc.setAttribute('contenteditable', !isEditing);
+      desc.focus();
+      editBtn.textContent = isEditing ? 'Edit' : 'Save';
+      if (isEditing) {
+        // Optionally, save content to backend here
+        console.log('New content:', desc.innerText);
+      }
+    });
+  });
+</script>
+
+<footer>
+  <div class="footer-buttons">
+    <button>Back to Dashboard</button>
+    <button>Write/Upload Script</button>
+    <button>Drawing Interface</button>
+    <button>Panel Suggestions</button>
+  </div>
+</footer>
+
+</body>
+</html>

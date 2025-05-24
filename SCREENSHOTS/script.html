@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Script Upload - Digital Comics Collaboration</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7f6;
+    }
+
+    header {
+      background-color: #8ACE00;
+      padding: 1em;
+      text-align: center;
+      color: white;
+      font-size: 1.8em;
+      position: relative;
+    }
+
+    main {
+      padding: 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2em;
+    }
+
+    .upload-container {
+      background: white;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
+    }
+
+    .upload-container h2 {
+      color: #333;
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      margin-bottom: 1em;
+    }
+
+    .tab-buttons button {
+      padding: 0.5em 1.5em;
+      border: none;
+      border-radius: 6px;
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    .tab-buttons button:hover {
+      background-color: #bbb;
+    }
+
+    .tab-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 0.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .toolbar button {
+      background-color: #eee;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 0.4em 0.8em;
+      cursor: pointer;
+    }
+
+    .editor-area {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1em;
+      width: 100%;
+      min-height: 200px;
+      background-color: #fff;
+    }
+
+    /* Popup */
+    #popup {
+      display: none;
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      background: white;
+      padding: 2em 3em;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      z-index: 1000;
+    }
+
+    #popup h3 {
+      color: #8ACE00;
+      font-size: 1.5em;
+      margin-bottom: 1em;
+    }
+
+    #popup button {
+      margin-top: 1em;
+      padding: 0.5em 1.2em;
+      background-color: #8ACE00;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #popup button:hover {
+      background-color: #76b300;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <button style="float: left; margin-right: 1em; background: white; color: #8ACE00; border: none; padding: 0.3em 0.8em; border-radius: 5px; cursor: pointer;">← Back</button>
+  The Legend of Asha
+</header>
+
+<main>
+  <div class="upload-container">
+    <h2>Upload or Write Your Script</h2>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('upload')">Upload File</button>
+      <button onclick="showTab('editor')">Write Script</button>
+    </div>
+
+    <div id="upload-tab" class="tab-content">
+      <input type="file" accept=".txt,.doc,.docx,.pdf">
+      <button onclick="showPopup()">Upload</button>
+    </div>
+
+    <div id="editor-tab" class="tab-content" style="display:none;">
+      <div class="toolbar">
+        <button onclick="format('bold')"><b>B</b></button>
+        <button onclick="format('italic')"><i>I</i></button>
+        <button onclick="format('underline')"><u>U</u></button>
+        <button onclick="format('insertUnorderedList')">• List</button>
+      </div>
+      <div id="editor" contenteditable="true" class="editor-area"></div>
+      <button onclick="showPopup()">Upload Typed Script</button>
+    </div>
+  </div>
+</main>
+
+<!-- Popup -->
+<div id="popup">
+  <h3>Script Uploaded Successfully!</h3>
+  <button onclick="closePopup()">OK</button>
+</div>
+
+<footer style="background: #8ACE00; padding: 1em; text-align: center; position: fixed; bottom: 0; width: 100%;">
+  <button style="background: white; color: #8ACE00; border: none; padding: 0.6em 1.2em; margin: 0 0.5em; border-radius: 6px; font-weight: 600; cursor: pointer;">Back to Dashboard</button>
+  <button style="background: white; color: #8ACE00; border: none; padding: 0.6em 1.2em; margin: 0 0.5em; border-radius: 6px; font-weight: 600; cursor: pointer;">Write/Upload Script</button>
+  <button style="background: white; color: #8ACE00; border: none; padding: 0.6em 1.2em; margin: 0 0.5em; border-radius: 6px; font-weight: 600; cursor: pointer;">Drawing Interface</button>
+  <button style="background: white; color: #8ACE00; border: none; padding: 0.6em 1.2em; margin: 0 0.5em; border-radius: 6px; font-weight: 600; cursor: pointer;">Panel Suggestions</button>
+</footer>
+
+<script>
+  function showPopup() {
+    document.getElementById('popup').style.display = 'block';
+  }
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+
+  function showTab(tab) {
+    document.getElementById('upload-tab').style.display = tab === 'upload' ? 'block' : 'none';
+    document.getElementById('editor-tab').style.display = tab === 'editor' ? 'block' : 'none';
+  }
+
+  function format(command) {
+    document.execCommand(command, false, null);
+  }
+</script>
+
+</body>
+</html>

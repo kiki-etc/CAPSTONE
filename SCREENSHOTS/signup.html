@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - Digital Comics Collaboration</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-container {
+      background: #fff;
+      padding: 2em;
+      width: 400px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 2em;
+    }
+
+    .tab {
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.5em 1em;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.3s;
+    }
+
+    .tab.active {
+      color: #8ACE00;
+      border-color: #8ACE00;
+    }
+
+    .form-group {
+      margin-bottom: 1.2em;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5em;
+      font-size: 0.9em;
+      color: #333;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.7em;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    .signup-button {
+      background: #8ACE00;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 0.9em;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .signup-button:hover {
+      background: #76b800;
+    }
+
+    .footer-text {
+      margin-top: 1em;
+      font-size: 0.85em;
+      text-align: center;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<div class="signup-container">
+  <div class="tabs">
+    <div class="tab active" onclick="selectTab('artist')">Sign up as Artist</div>
+    <div class="tab" onclick="selectTab('writer')">Sign up as Writer</div>
+  </div>
+
+  <form>
+    <div class="form-group">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" placeholder="Enter your full name">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your email">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Create a password">
+    </div>
+
+    <div class="form-group">
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" placeholder="Confirm your password">
+    </div>
+
+    <button type="button" class="signup-button">Sign Up</button>
+
+    <div class="footer-text">
+      Already have an account? <a href="#" style="color:#8ACE00; text-decoration: none;">Login</a>
+    </div>
+  </form>
+</div>
+
+<script>
+  function selectTab(role) {
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    if (role === 'artist') {
+      tabs[0].classList.add('active');
+    } else {
+      tabs[1].classList.add('active');
+    }
+  }
+</script>
+
+</body>
+</html>

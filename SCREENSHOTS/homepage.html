@@ -1,0 +1,109 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Digital Comics Collaboration</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7f6;
+    }
+
+    header {
+      background-color: #8ACE00;
+      padding: 1em;
+      text-align: center;
+      color: white;
+      font-size: 1.5em;
+    }
+
+    main {
+      padding: 2em;
+    }
+
+    .section-title {
+      font-size: 1.4em;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      color: #333;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5em;
+      margin-bottom: 2em;
+    }
+
+    .project-card {
+      background: white;
+      padding: 1em;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-title {
+      font-size: 1.2em;
+      color: #8ACE00;
+      margin-bottom: 0.5em;
+    }
+
+    .project-status {
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  Digital Comics Collaboration - Dashboard
+</header>
+
+<main>
+
+  <div>
+    <div class="section-title">Current Projects</div>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-title">The Legend of Asha</div>
+        <div class="project-status">Status: In Progress</div>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Space Wanderers</div>
+        <div class="project-status">Status: In Progress</div>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Shadow Realm</div>
+        <div class="project-status">Status: In Progress</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-title">Completed Projects</div>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-title">Sunflower Dreams</div>
+        <div class="project-status">Status: Completed</div>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Neon Knights</div>
+        <div class="project-status">Status: Completed</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
